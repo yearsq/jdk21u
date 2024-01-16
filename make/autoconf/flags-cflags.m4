@@ -723,7 +723,7 @@ AC_DEFUN([FLAGS_SETUP_CFLAGS_CPU_DEP],
       AC_MSG_CHECKING([if control flow protection is enabled by additional compiler flags])
       if echo "${EXTRA_CFLAGS}${EXTRA_CXXFLAGS}${EXTRA_ASFLAGS}" | ${GREP} -q 'fcf-protection' ; then
         # cf-protection requires CMOV and thus i686
-        $1_CFLAGS_CPU="-march=i686"
+        $1_CFLAGS_CPU="-march=i686 -m32 -fcf-protection=none"
         AC_MSG_RESULT([yes, forcing ${$1_CFLAGS_CPU}])
       else
         # Force compatibility with i586 on 32 bit intel platforms.
